@@ -15,24 +15,24 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* --- THE FIX IS HERE --- */
 /* Strictly disable all native browser dragging and selection */
 * {
   transition: none !important;
   animation: none !important;
   user-select: none;
   -webkit-user-select: none;
-  -webkit-user-drag: none; /* Chrome/Safari/Edge specific fix */
+  -webkit-user-drag: none; 
 }
 
-/* Ensure images and standard elements don't trigger ghosts */
 img, div, a {
   -webkit-user-drag: none;
 }
 
-/* No Interactive Visual Feedback */
+/* FIXED: We removed 'transform: none' because it broke our 
+   coordinate positioning. We only want to prevent opacity changes.
+*/
 button:active, 
 div:active {
-  transform: none !important;
   opacity: 1 !important;
+  /* transform: none !important;  <-- DELETED THIS LINE */
 }
