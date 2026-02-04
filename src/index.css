@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  touch-action: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* --- THE FIX IS HERE --- */
+/* Strictly disable all native browser dragging and selection */
+* {
+  transition: none !important;
+  animation: none !important;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none; /* Chrome/Safari/Edge specific fix */
+}
+
+/* Ensure images and standard elements don't trigger ghosts */
+img, div, a {
+  -webkit-user-drag: none;
+}
+
+/* No Interactive Visual Feedback */
+button:active, 
+div:active {
+  transform: none !important;
+  opacity: 1 !important;
+}
